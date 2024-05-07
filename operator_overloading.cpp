@@ -2,78 +2,49 @@
 using namespace std;
 class complex
 {
-	int a,b;
-	public:
-		void getvalue();
-		void operator -();
-		void operator ++();
-		void operator++(int);
-		complex operator+(complex ob);
-		complex operator-(complex ob);
-		void display();
-		
+	int real,img;
+	public: void getReal()
+	        {
+	        	cout<<"enter real part"<<endl;
+	        	cin>>real;
+			}
+			void getImg()
+			{
+				cout<<"enter imginary part"<<endl;
+				cin>>img;
+			}
+			void display()
+			{
+				cout<<real<<"+"<<img<<"i"<<endl;
+			}
+			complex operator +(complex ob);
+			
+			void operator ++()
+			{
+				real=real+1;
+				img=img+1;
+			}
 };
-void complex::getvalue()
+complex complex::operator +(complex ob)
 {
-	cout<<"Enter the value of complex numbers a,b"<<endl;
-	cin>>a>>b;
-}
-void complex::operator -()
-{
-	a=-a;
-	b=-b;
-}
-void complex::operator ++()
-{
-	++a;
-	++b;
-}
-void complex::operator++(int)
-{
-	a++;
-	b++;
-}
-complex complex::operator+(complex ob)
-{
-	complex t;
-	t.a=a+ob.a;
-	t.b=b+ob.b;
-	return (t);
-}
-complex complex::operator-(complex ob)
-{
-	complex t;
-	t.a=a-ob.a;
-	t.b=b-ob.b;
-	return (t);
-}
-void complex::display()
-{
-	cout<<a<<"+"<<b<<"i"<<endl;
+	complex T;
+	T.real=real+ob.real;
+	T.img=img+ob.img;
+	return (T);
 }
 int main()
 {
-	complex obj1,obj2,result,result1;
-	obj1.getvalue();
-	obj2.getvalue();
-	cout<<"Input values"<<endl;
-	obj1.display();
-	obj2.display();
-	result=obj1+obj2;
-	result1=obj1-obj2;
-	cout<<"result"<<endl;
-	result.display();
-	result1.display();
-	++obj1;
-	obj2++;
-	cout<<"After increment"<<endl;
-	obj1.display();
-	obj2.display();
-	-obj1;
-	-obj2;
-	cout<<"After negetion"<<endl;
-	obj1.display();
-	obj2.display();
-	return 0;
-	
+	complex c1,c2,c3;
+	c1.getReal();
+	c1.getImg();
+	c2.getReal();
+	c2.getImg();
+	c1.display();
+	c2.display();
+	c3=c1+c2;
+	cout<<"sum of complex number is:";
+	c3.display();
+	cout<<"after increment num is :";
+	++c3;
+	c3.display();
 }
